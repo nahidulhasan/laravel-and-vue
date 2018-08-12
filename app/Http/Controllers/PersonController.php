@@ -1,12 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Person;
 
 class PersonController extends Controller
 {
-    public function storeItem(Request $request) {
+    public function storeItem(Request $request) 
+    {
 		$data = new Person ();
 		$data->name = $request->name;
 		$data->age = $request->age;
@@ -14,14 +15,20 @@ class PersonController extends Controller
 		$data->save ();
 		return $data;
 	}
-	public function readItems() {
+
+	public function readItems() 
+	{
 		$data = Person::all ();
 		return $data;
 	}
-	public function deleteItem(Request $request) {
+
+	public function deleteItem(Request $request) 
+	{
 		$data = Person::find ( $request->id )->delete ();
 	}
-	public function editItem(Request $request, $id){
+
+	public function editItem(Request $request, $id)
+	{
 		$data =Person::where('id', $id)->first();
 		$data->name = $request->get('val_1');
 		$data->age = $request->get('val_2');

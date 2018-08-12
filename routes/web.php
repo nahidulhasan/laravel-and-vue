@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post ( '/vueitems', 'PesonController@storeItem' );
-Route::get ( '/vueitems', 'PesonController@readItems' );
-Route::post ( '/vueitems/{id}', 'PesonController@deleteItem' );
-Route::post ( '/edititems/{id}', 'PesonController@editItem' );
+Route::post ( '/vueitems', 'PersonController@storeItem' );
+Route::get ( '/vueitems', 'PersonController@readItems' );
+Route::post ( '/vueitems/{id}', 'PersonController@deleteItem' );
+Route::post ( '/edititems/{id}', 'PersonController@editItem' );
