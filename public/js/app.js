@@ -13905,8 +13905,86 @@ window.Vue = __webpack_require__(36);
 
 Vue.component('example-component', __webpack_require__(39));
 
+/*const app = new Vue({
+    el: '#app'
+});
+*/
+
+Vue.component('modal', {
+  template: '#modal-template'
+});
+
 var app = new Vue({
-  el: '#app'
+  el: '#vue-wrapper',
+
+  data: {
+    items: [],
+    hasError: true,
+    hasDeleted: true,
+    hasAgeError: true,
+    showModal: false,
+    e_name: '',
+    e_age: '',
+    e_id: '',
+    e_profession: '',
+    newItem: { 'name': '', 'age': '', 'profession': '' }
+  },
+  mounted: function mounted() {
+    this.getVueItems();
+  },
+  methods: {
+    getVueItems: function getVueItems() {
+      var _this = this;
+
+      axios.get('/vueitems').then(function (response) {
+        _this.items = response.data;
+      });
+    },
+    setVal: function setVal(val_id, val_name, val_age, val_profession) {
+      this.e_id = val_id;
+      this.e_name = val_name;
+      this.e_age = val_age;
+      this.e_profession = val_profession;
+    },
+
+
+    createItem: function createItem() {
+      var _this = this;
+      var input = this.newItem;
+
+      if (input['name'] == '' || input['age'] == '' || input['profession'] == '') {
+        this.hasError = false;
+      } else {
+        this.hasError = true;
+        axios.post('/vueitems', input).then(function (response) {
+          _this.newItem = { 'name': '', 'age': '', 'profession': '' };
+          _this.getVueItems();
+        });
+        this.hasDeleted = true;
+      }
+    },
+    editItem: function editItem() {
+      var _this2 = this;
+
+      var i_val_1 = document.getElementById('e_id');
+      var n_val_1 = document.getElementById('e_name');
+      var a_val_1 = document.getElementById('e_age');
+      var p_val_1 = document.getElementById('e_profession');
+
+      axios.post('/edititems/' + i_val_1.value, { val_1: n_val_1.value, val_2: a_val_1.value, val_3: p_val_1.value }).then(function (response) {
+        _this2.getVueItems();
+        _this2.showModal = false;
+      });
+      this.hasDeleted = true;
+    },
+    deleteItem: function deleteItem(item) {
+      var _this = this;
+      axios.post('/vueitems/' + item.id).then(function (response) {
+        _this.getVueItems();
+        _this.hasError = true, _this.hasDeleted = false;
+      });
+    }
+  }
 });
 
 /***/ }),
