@@ -81,13 +81,13 @@ html, body {
 </head>
 <body>
     <div class="flex-center position-ref full-height">
+
+
         <div id="vue-wrapper">
             <div class="content">
-                <!-- <div class="form-group row"> -->
-                    <!-- <div class="col-md-8"> -->
-                        
-                        
-                        
+                  
+                   <h2> Laravel and Vue Js </h2>
+                          
                   <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" name="name" 
@@ -108,6 +108,7 @@ html, body {
                     <span class="glyphicon glyphicon-plus"></span> ADD
                  </button>
 
+
                 <p class="text-center alert alert-danger"
                     v-bind:class="{ hidden: hasError }">Please fill all fields!</p>
                     <p class="text-center alert alert-danger"
@@ -115,6 +116,8 @@ html, body {
                 {{ csrf_field() }}
                 <p class="text-center alert alert-success"
                     v-bind:class="{ hidden: hasDeleted }">Deleted Successfully!</p>
+
+
                 <div class="table table-borderless" id="table">
                     <table class="table table-borderless" id="table">
                         <thead>
@@ -139,6 +142,8 @@ html, body {
                         </tr>
                     </table>
                 </div>
+
+
                 <modal v-if="showModal" @close="showModal=false">
                     <h3 slot="header">Edit Info</h3>
                     <div slot="body">
@@ -152,7 +157,6 @@ html, body {
                         Profession: <input type="text" class="form-control" id="e_profession" name="profession"
                         required  :value="this.e_profession">
                         
-                      
                     </div>
                     <div slot="footer">
                         <button class="btn btn-default" @click="showModal = false">
@@ -164,10 +168,14 @@ html, body {
                       </button>
                     </div>
                 </modal>
+
+
             </div>
         </div>
     </div>
+
     <script type="text/javascript" src="/js/app.js"></script>
+
     <script type="text/x-template" id="modal-template">
       <transition name="modal">
         <div class="modal-mask">
@@ -197,5 +205,7 @@ html, body {
         </div>
       </transition>
     </script>
+
+
 </body>
 </html>
