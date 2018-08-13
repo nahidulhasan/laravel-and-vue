@@ -140,7 +140,7 @@ html, body {
                     </table>
                 </div>
                 <modal v-if="showModal" @close="showModal=false">
-                    <h3 slot="header">Edit Item</h3>
+                    <h3 slot="header">Edit Info</h3>
                     <div slot="body">
                         
                         <input type="hidden" disabled class="form-control" id="e_id" name="id"
